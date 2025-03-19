@@ -25,6 +25,7 @@
     "noImplicitReturns": true,
     "noImplicitOverride": true,
     "noImplicitAny": true,
+    "allowSyntheticDefaultImports": true
   },
   "include": ["src"]
 }
