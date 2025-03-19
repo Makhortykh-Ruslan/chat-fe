@@ -1,0 +1,11 @@
+@use 'variables' as variable;
+
+@mixin font-base(
+  $size: variable.$font-family-base,
+  $font-weight: 400,
+  $height: variable.$line-height-base,
+  $font-style: normal,
+  $font-family: variable.$font-family-base
+) {
+  font: $font-weight $font-style #{$size}/#{$height $font-family};
+}
