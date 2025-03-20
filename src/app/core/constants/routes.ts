@@ -6,7 +6,7 @@ type MainRoutingPath = 'chat';
 
 export type AppRouting = AuthRoutingPath | MainRoutingPath;
 
-export const appRoutesPath: Record<AppRouting, RouterPath> = {
+export const appRoutes: Record<AppRouting, RouterPath> = {
   // AUTH ROUTING //
   auth: {
     routerPath: 'auth',

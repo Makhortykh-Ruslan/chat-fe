@@ -10,7 +10,7 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      '@core': '/src',
+      '@core': './src/app',
     },
   },
   build: {
