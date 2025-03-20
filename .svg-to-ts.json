@@ -1,0 +1,13 @@
+{
+  "verbose": true,
+  "srcFiles": ["./src/assets/icons/*.svg"],
+  "outputDirectory": "./src/app/core/icons-config",
+  "fileName": "icons-config",
+  "interfaceName": "CFIcon",
+  "typeName": "cfIcon",
+  "prefix": "cfIcons",
+  "exportCompleteIconSet": true,
+  "svgoConfig": {
+    "plugins": ["cleanupAttrs"]
+  }
+}
