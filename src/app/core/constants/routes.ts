@@ -1,4 +1,4 @@
-import { RouterPath } from '../types/router-path.ts';
+import { RouterPath } from '@core/types/router-path.ts';
 
 type AuthRoutingPath = 'auth' | 'registration' | 'login';
 

@@ -1,7 +1,6 @@
+import { appRoutes } from '@core/constants/routes.ts';
 import { lazy } from 'react';
 import { RouteObject } from 'react-router-dom';
-
-import { appRoutes } from '../../core/constants/routes.ts';
 
 const Layout = lazy(() => import('../../core/components/Layout/Layout.tsx'));
 

@@ -1,7 +1,6 @@
+import { cfIcon } from '@core/icons-config/icons-config.ts';
+import { useIconsContext } from '@core/icons-config/IconsContext.tsx';
 import { JSX } from 'react';
-
-import { cfIcon } from '../icons-config.ts';
-import { useIconsContext } from '../IconsContext.tsx';
 
 type IconProps = {
   name: cfIcon;

@@ -1,6 +1,5 @@
+import { Icon } from '@core/icons-config/Icon/Icon.tsx';
 import React from 'react';
-
-import { Icon } from '../../../../core/icons-config/Icon/Icon.tsx';
 
 const Chat: React.FC = () => {
   return (
