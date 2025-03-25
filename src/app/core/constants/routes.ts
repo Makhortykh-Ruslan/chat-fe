@@ -2,7 +2,7 @@ import { RouterPath } from '@core/types/router-path.ts';
 
 type AuthRoutingPath = 'auth' | 'registration' | 'login';
 
-type MainRoutingPath = 'chat';
+type MainRoutingPath = 'chat' | 'settings';
 
 export type AppRouting = AuthRoutingPath | MainRoutingPath;
 
@@ -21,5 +21,8 @@ export const appRoutes: Record<AppRouting, RouterPath> = {
   // MAIN ROUTING //
   chat: {
     routerPath: 'chat',
+  },
+  settings: {
+    routerPath: 'settings',
   },
 };

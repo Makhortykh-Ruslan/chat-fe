@@ -1,7 +1,7 @@
 import { Icon } from '@core/icons-config/Icon/Icon.tsx';
 import React from 'react';
 
-const Chat: React.FC = () => {
+const ChatPage: React.FC = () => {
   return (
     <div>
       Chat
@@ -10,4 +10,4 @@ const Chat: React.FC = () => {
   );
 };
 
-export default Chat;
+export default ChatPage;

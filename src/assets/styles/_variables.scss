@@ -1,5 +1,13 @@
 @use 'fonts' as fonts;
 
+
+:root {
+
+  &.light-mode {}
+
+  &.dark-mode {}
+}
+
 $gray: #344054;
 $blue: #1849a9;
 $blue-click: #194185;

@@ -9,13 +9,15 @@ const Registration = lazy(
   () => import('../auth/pages/Registration/Registration.tsx'),
 );
 
+const { login, registration, auth } = appRoutes;
+
 const children = [
-  { path: appRoutes.login.routerPath, element: <Login /> },
-  { path: appRoutes.registration.routerPath, element: <Registration /> },
+  { path: login.routerPath, element: <Login /> },
+  { path: registration.routerPath, element: <Registration /> },
 ];
 
 export const authRoutesConfig = {
-  path: appRoutes.auth.routerPath,
+  path: auth.routerPath,
   element: <Layout />,
   children,
 } as RouteObject;
