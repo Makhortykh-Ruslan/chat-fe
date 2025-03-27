@@ -11,19 +11,20 @@ type InputProps = {
   className?: string;
 };
 
-const inputClassNameFunc = (error, className): string =>
+const inputClassNameFunc = (error?: string, className?: string): string =>
   clsx(
-    'w-full px-4 py-2 rounded-md border transition outline-none',
+    'w-full px-3 py-2 rounded-md text-sm',
     'bg-white dark:bg-gray-800',
     'text-gray-900 dark:text-white',
     'placeholder-gray-400 dark:placeholder-gray-500',
+    'border outline-none transition-colors duration-200',
     error
       ? 'border-red-500 focus:border-red-600'
-      : 'border-gray-300 focus:border-blue-500',
+      : 'border-gray-300 focus:border-blue-500 dark:border-gray-600 dark:focus:border-blue-400',
     className,
   );
 
-const Input: React.FC<InputProps> = ({
+export const Input: React.FC<InputProps> = ({
   label,
   type = 'text',
   placeholder,
