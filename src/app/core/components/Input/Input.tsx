@@ -7,7 +7,7 @@ type InputProps = {
   placeholder?: string;
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  error?: string;
+  error: string;
   className?: string;
 };
 
@@ -27,7 +27,7 @@ const inputClassNameFunc = (error?: string, className?: string): string =>
 export const Input: React.FC<InputProps> = ({
   label,
   type = 'text',
-  placeholder,
+  placeholder = '',
   value,
   onChange,
   error,

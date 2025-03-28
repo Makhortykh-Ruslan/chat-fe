@@ -1,17 +1,16 @@
-import { ControlNames } from '@core/constants';
-import { TFunction } from 'i18next';
+import { EControlNames, TControlName } from '@core/constants';
 import { z, ZodTypeAny } from 'zod';
 
-export type FieldSchemaMap = Record<ControlNames, ZodTypeAny>;
+export type FieldSchemaMap = Record<TControlName, ZodTypeAny>;
 
-export const getControlSchemas = (t: TFunction): FieldSchemaMap => ({
-  [ControlNames.EMAIL]: z
+export const getControlSchemas = (t: any): FieldSchemaMap => ({
+  [EControlNames.EMAIL]: z
     .string({ required_error: t('form.email_required') })
-    .nullable()
+    .min(1, t('form.email_required'))
     .email(t('form.email_invalid')),
 
-  [ControlNames.PASSWORD]: z
+  [EControlNames.PASSWORD]: z
     .string({ required_error: t('form.password_required') })
-    .nullable()
+    .min(1, t('form.email_required'))
     .min(6, t('form.password_min')),
 });

@@ -5,7 +5,7 @@ import { initReactI18next } from 'react-i18next';
 import translationEn from './locales/en/translation.json';
 import translationUk from './locales/uk/translation.json';
 
-const resources = {
+export const resources = {
   en: { translation: translationEn },
   uk: { translation: translationUk },
 };
@@ -15,7 +15,8 @@ i18n
   .use(initReactI18next)
   .init({
     resources,
-    fallbackLng: 'uk',
+    lng: 'uk',
+    fallbackLng: 'en',
     interpolation: {
       escapeValue: false,
     },

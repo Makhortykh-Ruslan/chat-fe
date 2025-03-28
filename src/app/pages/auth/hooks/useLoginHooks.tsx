@@ -1,24 +1,23 @@
-import { ControlNames } from '@core/constants';
+import { EControlNames } from '@core/constants';
 import { useControlSchemas } from '@core/forms';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm, UseFormReturn } from 'react-hook-form';
 import { z } from 'zod';
 
-const controls = useControlSchemas();
+export const useLoginForm = (): UseFormReturn => {
+  const controls = useControlSchemas();
 
-const schema = z.object({
-  [ControlNames.EMAIL]: controls[ControlNames.EMAIL],
-  [ControlNames.PASSWORD]: controls[ControlNames.PASSWORD],
-});
+  const schema = z.object({
+    [EControlNames.EMAIL]: controls[EControlNames.EMAIL],
+    [EControlNames.PASSWORD]: controls[EControlNames.PASSWORD],
+  });
 
-type LoginFormData = z.infer<typeof schema>;
-
-export const useLoginForm = (): UseFormReturn<LoginFormData> =>
-  useForm<LoginFormData>({
+  return useForm({
     resolver: zodResolver(schema),
-    mode: 'onBlur',
+    mode: 'onChange',
     defaultValues: {
-      [ControlNames.EMAIL]: null,
-      [ControlNames.PASSWORD]: null,
+      [EControlNames.EMAIL]: '',
+      [EControlNames.PASSWORD]: '',
     },
   });
+};

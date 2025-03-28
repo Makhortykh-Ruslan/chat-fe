@@ -1,9 +1,16 @@
 {
   "form": {
-    "email": "Email",
-    "password": "Password",
-    "login": "Log in",
-    "email_required": "Email is required",
-    "email_invalid": "Invalid email"
+    "email": "Електронна пошта",
+    "password": "Пароль",
+    "login": "Логін",
+    "email_required": "Електронна пошта обовʼязкова",
+    "email_invalid": "Некоректна електронна пошта"
+  },
+  "placeholders": {
+    "email": "Введіть електронну пошту",
+    "password": "Введіть пароль"
+  },
+  "title": {
+    "login": "Вхід до вашого акаунта"
   }
 }

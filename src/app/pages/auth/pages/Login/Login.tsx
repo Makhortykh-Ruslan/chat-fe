@@ -1,21 +1,41 @@
 import { Input } from '@core/components/Input/Input.tsx';
-import React, { ChangeEvent } from 'react';
+import React from 'react';
+import { Controller } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
+
+import { useLoginForm } from '../../hooks/useLoginHooks.tsx';
 
 const Login: React.FC = () => {
-  const handleLogin = (event: ChangeEvent): void => {
-    console.log('event', event);
+  const { t } = useTranslation();
+  const {
+    control,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useLoginForm();
+
+  const onSubmit = (data: any): void => {
+    console.log('SUBMIT:', data);
   };
 
   return (
     <div>
-      <h1 className='text-4xl font-bold text-blue-500 p-10'>Hello</h1>
+      <h1>{t('form.email')}</h1>
 
-      <Input
-        placeholder={'hello'}
-        label={'Hello'}
-        value={''}
-        onChange={(e) => handleLogin(e)}
+      <Controller
+        name='email'
+        control={control}
+        render={({ field }) => (
+          <Input
+            {...field}
+            label='Email'
+            placeholder={t('placeholders.email')}
+            error={errors.email?.message as string}
+          />
+        )}
       />
+
+      <button onClick={handleSubmit(onSubmit)}>Увійти</button>
     </div>
   );
 };

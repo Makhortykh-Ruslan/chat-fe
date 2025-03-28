@@ -5,5 +5,12 @@
     "login": "Log in",
     "email_required": "Email is required",
     "email_invalid": "Invalid email"
+  },
+  "placeholders": {
+    "email": "Enter the email",
+    "password": "Enter the password"
+  },
+  "title": {
+    "login": "Log in to your account"
   }
 }
