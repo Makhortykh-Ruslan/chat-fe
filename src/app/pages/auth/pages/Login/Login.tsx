@@ -14,14 +14,12 @@ const Login: React.FC = () => {
     formState: { errors, isValid },
   } = useLoginForm();
 
-  const onHandleSubmit = (data: TLoginForm): void => {
-    console.log('SUBMIT:', data);
-  };
+  const onHandleSubmit = (_data: TLoginForm) => {};
 
   return (
-    <section className='min-h-screen flex flex-col items-center justify-center bg-gray-100'>
-      <div className='w-1/5 grid grid-cols-1 gap-4'>
-        <h1 className='text-3xl text-center'>{t('title.login')}</h1>
+    <section>
+      <div>
+        <h1>{t('title.login')}</h1>
 
         <Controller
           name='email'
