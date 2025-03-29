@@ -25,7 +25,7 @@ const inputClassNameFunc = (error?: string, className?: string): string =>
   );
 
 export const Input: React.FC<InputProps> = ({
-  label,
+  label = '',
   type = 'text',
   placeholder = '',
   value,

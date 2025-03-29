@@ -1,19 +1,21 @@
 import { EControlNames } from '@core/constants';
-import { useControlSchemas } from '@core/forms';
+import { getFormValidators } from '@core/forms/form-validators.ts';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm, UseFormReturn } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 import { z } from 'zod';
 
-export const useLoginForm = (): UseFormReturn => {
-  const controls = useControlSchemas();
+export type TLoginForm = {
+  [EControlNames.EMAIL]: string;
+  [EControlNames.PASSWORD]: string;
+};
 
-  const schema = z.object({
-    [EControlNames.EMAIL]: controls[EControlNames.EMAIL],
-    [EControlNames.PASSWORD]: controls[EControlNames.PASSWORD],
-  });
+export const useLoginForm = (): UseFormReturn<TLoginForm> => {
+  const { t } = useTranslation();
+  const schema = z.object(getFormValidators(t));
 
-  return useForm({
-    resolver: zodResolver(schema),
+  return useForm<TLoginForm>({
+    resolver: zodResolver<TLoginForm>(schema),
     mode: 'onChange',
     defaultValues: {
       [EControlNames.EMAIL]: '',
