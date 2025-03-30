@@ -1,2 +1,2 @@
 export * from './auth-service.ts';
-export * from './supabaseClient.ts';
+export * from './supabase-client.ts';

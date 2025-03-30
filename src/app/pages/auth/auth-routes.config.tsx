@@ -1,6 +1,6 @@
 import { appRoutes } from '@core/constants/routes.ts';
 import { lazy } from 'react';
-import { RouteObject } from 'react-router-dom';
+import { Navigate, RouteObject } from 'react-router-dom';
 
 const Layout = lazy(() => import('../../core/components/Layout/Layout.tsx'));
 
@@ -12,6 +12,7 @@ const Registration = lazy(
 const { login, registration, auth } = appRoutes;
 
 const children = [
+  { index: true, element: <Navigate to={login.routerPath} /> },
   { path: login.routerPath, element: <Login /> },
   { path: registration.routerPath, element: <Registration /> },
 ];

@@ -12,10 +12,10 @@ export const appRoutes: Record<AppRouting, RouterPath> = {
     routerPath: 'auth',
   },
   registration: {
-    routerPath: 'registration',
+    routerPath: 'singUp',
   },
   login: {
-    routerPath: 'login',
+    routerPath: 'singIn',
   },
 
   // MAIN ROUTING //

@@ -1,16 +1,13 @@
-import { supabase } from '@core/services/supabaseClient.ts';
-import type {
-  AuthResponse,
-  AuthTokenResponsePassword,
-} from '@supabase/auth-js/src/lib/types.ts';
+import { supabase } from '@core/services/supabase-client.ts';
+import { TAuthForm } from '@core/types';
+import { AuthResponse, AuthTokenResponsePassword } from '@supabase/supabase-js';
 
-import { TLoginForm } from '../../pages/auth/hooks/useLoginHooks.tsx';
+export class AuthService {
+  static async login(data: TAuthForm): Promise<AuthTokenResponsePassword> {
+    return await supabase.auth.signInWithPassword(data);
+  }
 
-export const authSupabase = async (
-  data: TLoginForm,
-): Promise<AuthTokenResponsePassword> =>
-  await supabase.auth.signInWithPassword(data);
-
-export const registrationSupabase = async (
-  data: TLoginForm,
-): Promise<AuthResponse> => await supabase.auth.signUp(data);
+  static async register(data: TAuthForm): Promise<AuthResponse> {
+    return await supabase.auth.signUp(data);
+  }
+}

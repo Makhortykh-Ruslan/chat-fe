@@ -1,19 +1,14 @@
 {
-  "labels": {
-    "email": "Email",
-    "password": "Password"
-  },
-  "form": {
-    "email_invalid": "Invalid email",
-    "field_required": "Field is required!",
-    "password_min": "Password will be min 6 symbols"
-  },
-  "placeholders": {
-    "email": "Enter the email",
-    "password": "Enter the password"
-  },
-  "title": {
-    "login": "Log in to your account"
-  },
-  "login": "Log in"
+  "email_invalid": "Invalid email",
+  "field_required": "Field is required!",
+  "password_min": "Password will be min 6 symbols",
+  "email_placeholder": "Enter the email",
+  "password_placeholder": "Enter the password",
+  "login_title": "Log in to your account",
+  "login": "Log in",
+  "sign_up": "Sign Up",
+  "no_account": "Don’t have an account?",
+
+  "email": "Email",
+  "password": "Password"
 }
