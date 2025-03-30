@@ -31,6 +31,7 @@ const Login: React.FC = () => {
       const { data, error } = await AuthService.login(formData);
 
       console.log('request', error?.message);
+      console.log('data', data)
       toggleSpinner(false);
     } catch (error) {
       console.log('error', error);
@@ -54,7 +55,11 @@ const Login: React.FC = () => {
           name='email'
           control={control}
           render={({ field }) => (
-            <Input {...field} error={errors.email?.message as string} />
+            <Input
+              label={t('login_title')}
+              {...field}
+              error={errors.email?.message as string}
+            />
           )}
         />
 
@@ -62,7 +67,11 @@ const Login: React.FC = () => {
           name='password'
           control={control}
           render={({ field }) => (
-            <Input {...field} error={errors.password?.message as string} />
+            <Input
+              label={t('login_title')}
+              {...field}
+              error={errors.password?.message as string}
+            />
           )}
         />
 
