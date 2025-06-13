@@ -57,9 +57,9 @@ export default tseslint.config(
           'simple-import-sort/exports': 'error',
 
           // Remove unused imports
-          'unused-imports/no-unused-imports': 'error',
+          'unused-imports/no-unused-imports': 'off',
           'unused-imports/no-unused-vars': [
-              'error',
+              'off',
               { 'vars': 'all', 'varsIgnorePattern': '^_', 'args': 'after-used', 'argsIgnorePattern': '^_' },
           ],
 

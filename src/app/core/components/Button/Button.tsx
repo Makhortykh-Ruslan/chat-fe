@@ -6,16 +6,12 @@ type ButtonProps = {
   onClick: () => void;
 };
 
-export const Button: React.FC<ButtonProps> = ({
-  children,
-  disabled,
-  onClick,
-}) => {
-  return (
-    <button disabled={disabled} onClick={onClick}>
-      {children}
-    </button>
-  );
-};
-
-export default memo(Button);
+export const Button: React.FC<ButtonProps> = memo(
+  ({ children, disabled, onClick }) => {
+    return (
+      <button data-testid='data-test-id' disabled={disabled} onClick={onClick}>
+        {children}
+      </button>
+    );
+  },
+);

@@ -35,6 +35,7 @@
     "noImplicitOverride": true,
     "noImplicitAny": true,
     "allowSyntheticDefaultImports": true,
+    "types": ["jest", "@testing-library/jest-dom"]
   },
-  "include": ["src"]
+  "include": ["src", "setupTests.ts"]
 }
