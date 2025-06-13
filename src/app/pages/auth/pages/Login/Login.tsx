@@ -3,7 +3,6 @@ import { Input } from '@core/components/Input/Input.tsx';
 import { Spinner } from '@core/components/Spinner/Spinner.tsx';
 import { appRoutes } from '@core/constants';
 import { useModuleNavigate } from '@core/hooks';
-import { AuthService } from '@core/services';
 import { TAuthForm } from '@core/types';
 import { AuthTokenResponsePassword } from '@supabase/supabase-js';
 import React, { useState } from 'react';
@@ -25,20 +24,7 @@ const Login: React.FC = () => {
 
   const onHandleSubmit = async (
     formData: TAuthForm,
-  ): Promise<AuthTokenResponsePassword> => {
-    toggleSpinner(true);
-    try {
-      const { data, error } = await AuthService.login(formData);
-
-      console.log('request', error?.message);
-      console.log('data', data)
-      toggleSpinner(false);
-    } catch (error) {
-      console.log('error', error);
-
-      toggleSpinner(false);
-    }
-  };
+  ): Promise<AuthTokenResponsePassword> => {};
 
   const handleRedirectToSingUp = (): void => {
     navigateFromModule(appRoutes.registration.routerPath);

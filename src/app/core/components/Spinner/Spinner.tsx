@@ -1,4 +1,3 @@
-import clsx from 'clsx';
 import React from 'react';
 
 type SpinnerProps = {
@@ -18,14 +17,5 @@ export const Spinner: React.FC<SpinnerProps> = ({
   color = 'border-blue-600',
   className = '',
 }) => {
-  return (
-    <div
-      className={clsx(
-        'animate-spin rounded-full border-t-transparent',
-        sizeClasses[size],
-        color,
-        className,
-      )}
-    />
-  );
+  return <div></div>;
 };
