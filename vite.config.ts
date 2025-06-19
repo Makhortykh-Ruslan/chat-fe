@@ -1,6 +1,6 @@
+import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
-import { defineConfig } from 'vite';
 
 export default defineConfig({
   plugins: [react()],
@@ -14,15 +14,9 @@ export default defineConfig({
       '@core': path.resolve(__dirname, './src/app/core'),
     },
   },
-  build: {
-    sourcemap: true,
-    minify: 'esbuild',
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          react: ['react', 'react-dom'],
-        },
-      },
-    },
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: './src/setupTests.ts',
   },
 });
