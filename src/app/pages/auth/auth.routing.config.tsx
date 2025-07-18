@@ -2,7 +2,7 @@ import { appRoutes } from '@core/constants/routes.ts';
 import { lazy } from 'react';
 import { Navigate, RouteObject } from 'react-router-dom';
 
-const Layout = lazy(() => import('../../core/components/Layout/Layout.tsx'));
+import { AuthPage } from './auth.page.tsx';
 
 const Login = lazy(() => import('../auth/pages/Login/Login.tsx'));
 const Registration = lazy(
@@ -17,8 +17,8 @@ const children = [
   { path: registration.routerPath, element: <Registration /> },
 ];
 
-export const authRoutesConfig = {
+export const authRoutingConfig = {
   path: auth.routerPath,
-  element: <Layout />,
+  element: <AuthPage />,
   children,
 } as RouteObject;

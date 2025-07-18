@@ -1,17 +1,12 @@
 import SideBar from '@core/components/SideBar/SideBar.tsx';
 import React from 'react';
-
-import styles from './Main.module.scss';
-
-const Layout = React.lazy(
-  () => import('../../core/components/Layout/Layout.tsx'),
-);
+import { Outlet } from 'react-router-dom';
 
 const MainPage: React.FC = () => {
   return (
-    <div className={styles.page}>
+    <div>
       <SideBar />
-      <Layout />
+      <Outlet />
     </div>
   );
 };

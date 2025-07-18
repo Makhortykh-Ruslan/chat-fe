@@ -1,7 +1,6 @@
 import { Button } from '@core/components/Button/Button.tsx';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import React from 'react';
 
 describe('button', () => {
   test('button render to dom', () => {

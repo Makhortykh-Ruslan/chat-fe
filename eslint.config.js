@@ -17,12 +17,9 @@ export default tseslint.config(
   { ignores: ['dist'] },
   {
     settings: {
-      'import/resolver': {
-        alias: {
-          map: [['@core', './src/app/core']],
-          extensions: ['.ts', '.tsx', '.js', '.jsx'],
+        'import/resolver': {
+            typescript: {},
         },
-      },
     },
     extends: [js.configs.recommended, ...tseslint.configs.recommended],
     files: ['**/*.{ts,tsx}'],

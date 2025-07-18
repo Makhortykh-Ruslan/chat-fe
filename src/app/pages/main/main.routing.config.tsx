@@ -15,7 +15,7 @@ const children = [
   { path: settings.routerPath, element: <Settings /> },
 ];
 
-export const mainRoutesConfig = {
+export const mainRoutingConfig = {
   path: '',
   element: <MainPage />,
   children,
