@@ -1,6 +1,7 @@
-import { supabase } from '@core/services/supabase-client.ts';
-import { TAuthForm } from '@core/types';
+import { supabase } from '@core/supabase/supabase-client.ts';
 import { AuthResponse, AuthTokenResponsePassword } from '@supabase/supabase-js';
+
+import { TAuthForm } from '../types';
 
 export class AuthService {
   static async login(data: TAuthForm): Promise<AuthTokenResponsePassword> {

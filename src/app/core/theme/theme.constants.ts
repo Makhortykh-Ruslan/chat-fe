@@ -1,6 +1,8 @@
+import { commonComponents } from '@core/theme/common-components.constants.ts';
 import { createTheme } from '@mui/material/styles';
 
 export const lightTheme = createTheme({
+  components: commonComponents,
   palette: {
     mode: 'light',
     primary: { main: '#1976d2' },
@@ -11,6 +13,7 @@ export const lightTheme = createTheme({
 });
 
 export const darkTheme = createTheme({
+  components: commonComponents,
   palette: {
     mode: 'dark',
     background: {

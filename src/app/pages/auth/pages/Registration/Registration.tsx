@@ -8,6 +8,10 @@ import { AuthLayout } from '@/app/pages/auth/components/auth-layout/auth-layout.
 const Registration: React.FC = () => {
   const navigateFromModule = useModuleNavigate();
 
+  const handleSubmit = (): void => {
+    console.log('handleSubmit');
+  };
+
   const handleRedirectToSingIn = (): void => {
     navigateFromModule(appRoutes.login.routerPath);
   };
@@ -20,12 +24,6 @@ const Registration: React.FC = () => {
 
       <TextField
         id='outlined-basic'
-        type='text'
-        label='Name'
-        variant='outlined'
-      />
-      <TextField
-        id='outlined-basic'
         type='email'
         label='Email'
         variant='outlined'
@@ -36,6 +34,10 @@ const Registration: React.FC = () => {
         label='Password'
         variant='outlined'
       />
+
+      <Button variant='contained' onClick={handleSubmit}>
+        Sing up
+      </Button>
 
       <Stack
         direction='row'

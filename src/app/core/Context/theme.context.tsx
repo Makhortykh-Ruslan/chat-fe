@@ -1,4 +1,4 @@
-import { darkTheme, lightTheme } from '@core/constants';
+import { darkTheme, lightTheme } from '@core/theme';
 import { CssBaseline, ThemeProvider } from '@mui/material';
 import React, { createContext, useContext, useMemo, useState } from 'react';
 

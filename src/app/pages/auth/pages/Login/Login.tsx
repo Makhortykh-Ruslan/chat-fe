@@ -1,12 +1,37 @@
 import { appRoutes } from '@core/constants';
 import { useModuleNavigate } from '@core/hooks';
-import { Button, Stack, TextField, Typography } from '@mui/material';
-import React from 'react';
+import { AuthService } from '@core/services';
+import {
+  Button,
+  CircularProgress,
+  Stack,
+  TextField,
+  Typography,
+} from '@mui/material';
+import React, { useState } from 'react';
 
 import { AuthLayout } from '@/app/pages/auth/components/auth-layout/auth-layout.tsx';
 
 const Login = (): React.ReactNode => {
+  const [isShowLoader, setIsShowLoader] = useState(false);
   const navigateFromModule = useModuleNavigate();
+
+  const handleSubmit = async (): Promise<void> => {
+    setIsShowLoader(true);
+
+    const { data, error } = await AuthService.register({
+      email: 'someone@email.com',
+      password: 'UcdmCvDmXghTKMfxUyfZ',
+    });
+
+    if (error) {
+      alert(error);
+      setIsShowLoader(false);
+      return;
+    }
+
+    console.log('handleSubmit', data, error);
+  };
 
   const handleRedirectToSingUp = (): void => {
     navigateFromModule(appRoutes.registration.routerPath);
@@ -18,10 +43,29 @@ const Login = (): React.ReactNode => {
         Login
       </Typography>
 
-      <TextField id='outlined-basic' label='Login' variant='outlined' />
-      <TextField id='outlined-basic' label='Password' variant='outlined' />
+      <TextField
+        id='outlined-basic'
+        type='email'
+        label='Email'
+        variant='outlined'
+      />
+      <TextField
+        id='outlined-basic'
+        type='password'
+        label='Password'
+        variant='outlined'
+      />
 
-      <Button variant='contained'>Sing in</Button>
+      <Button
+        variant='contained'
+        onClick={handleSubmit}
+        disabled={isShowLoader}
+        startIcon={
+          isShowLoader ? <CircularProgress size={20} color='inherit' /> : null
+        }
+      >
+        {isShowLoader ? 'please wait...' : 'Sing in'}
+      </Button>
 
       <Stack
         direction='row'

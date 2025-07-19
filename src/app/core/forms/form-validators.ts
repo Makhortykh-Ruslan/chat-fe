@@ -1,15 +1,14 @@
 import { EControlNames } from '@core/constants';
-import { TFunction } from 'i18next';
 import { z } from 'zod';
 
-export const getFormValidators = (t: TFunction<'translation'>) => ({
+export const getFormValidators = {
   [EControlNames.EMAIL]: z
-    .string({ required_error: t('field_required') })
-    .min(1, t('field_required'))
-    .email(t('email_invalid')),
+    .string({ required_error: 'Field is required' })
+    .min(1, 'Field is required')
+    .email('Email is not correctly'),
 
   [EControlNames.PASSWORD]: z
-    .string({ required_error: t('field_required') })
-    .min(1, t('field_required'))
-    .min(6, t('password_min')),
-});
+    .string({ required_error: 'Filed is required' })
+    .min(1, 'Field is required')
+    .min(6, 'Password must by minimum 6 symbols'),
+};
