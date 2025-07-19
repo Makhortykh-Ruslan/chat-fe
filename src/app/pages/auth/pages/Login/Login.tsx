@@ -9,28 +9,40 @@ import {
   Typography,
 } from '@mui/material';
 import React, { useState } from 'react';
+import { Controller } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 
 import { AuthLayout } from '@/app/pages/auth/components/auth-layout/auth-layout.tsx';
+import { useAuthForm } from '@/app/pages/auth/hooks/useAuthForm.tsx';
 
 const Login = (): React.ReactNode => {
   const [isShowLoader, setIsShowLoader] = useState(false);
   const navigateFromModule = useModuleNavigate();
+  const navigate = useNavigate();
+
+  const {
+    control,
+    getValues,
+    formState: { errors, isValid },
+    reset,
+  } = useAuthForm();
 
   const handleSubmit = async (): Promise<void> => {
     setIsShowLoader(true);
 
-    const { data, error } = await AuthService.register({
-      email: 'someone@email.com',
-      password: 'UcdmCvDmXghTKMfxUyfZ',
-    });
+    const model = getValues();
+    const { error } = await AuthService.register(model);
 
     if (error) {
       alert(error);
       setIsShowLoader(false);
+      reset();
       return;
     }
 
-    console.log('handleSubmit', data, error);
+    navigate('/');
+
+    setIsShowLoader(false);
   };
 
   const handleRedirectToSingUp = (): void => {
@@ -43,23 +55,44 @@ const Login = (): React.ReactNode => {
         Login
       </Typography>
 
-      <TextField
-        id='outlined-basic'
-        type='email'
-        label='Email'
-        variant='outlined'
+      <Controller
+        name='email'
+        control={control}
+        render={({ field }) => (
+          <TextField
+            {...field}
+            id='outlined-basic'
+            type='email'
+            label='Email'
+            variant='outlined'
+            error={!!errors.email}
+            helperText={errors.email?.message}
+            fullWidth
+          />
+        )}
       />
-      <TextField
-        id='outlined-basic'
-        type='password'
-        label='Password'
-        variant='outlined'
+
+      <Controller
+        name='password'
+        control={control}
+        render={({ field }) => (
+          <TextField
+            {...field}
+            id='outlined-basic'
+            type='password'
+            label='Password'
+            variant='outlined'
+            error={!!errors.password}
+            helperText={errors.password?.message}
+            fullWidth
+          />
+        )}
       />
 
       <Button
         variant='contained'
         onClick={handleSubmit}
-        disabled={isShowLoader}
+        disabled={isShowLoader || !isValid}
         startIcon={
           isShowLoader ? <CircularProgress size={20} color='inherit' /> : null
         }
