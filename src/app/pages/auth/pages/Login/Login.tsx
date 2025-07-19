@@ -1,64 +1,44 @@
-import { Input } from '@core/components/Input/Input.tsx';
 import { appRoutes } from '@core/constants';
 import { useModuleNavigate } from '@core/hooks';
+import { Button, Stack, TextField, Typography } from '@mui/material';
 import React from 'react';
-import { Controller } from 'react-hook-form';
 
-import { useLoginForm } from '../../hooks/useLoginHooks.tsx';
+import { AuthLayout } from '@/app/pages/auth/components/auth-layout/auth-layout.tsx';
 
-const Login: React.FC = () => {
+const Login = (): React.ReactNode => {
   const navigateFromModule = useModuleNavigate();
-
-  const {
-    control,
-    handleSubmit,
-    formState: { errors, isValid },
-  } = useLoginForm();
 
   const handleRedirectToSingUp = (): void => {
     navigateFromModule(appRoutes.registration.routerPath);
   };
 
   return (
-    <section>
-      <div>
-        <h1>Hello</h1>
+    <AuthLayout>
+      <Typography variant='h4' align='center' sx={{ textAlign: 'center' }}>
+        Login
+      </Typography>
 
-        <Controller
-          name='email'
-          control={control}
-          render={({ field }) => (
-            <Input
-              label='Email'
-              {...field}
-              error={errors.email?.message as string}
-            />
-          )}
-        />
+      <TextField id='outlined-basic' label='Login' variant='outlined' />
+      <TextField id='outlined-basic' label='Password' variant='outlined' />
 
-        <Controller
-          name='password'
-          control={control}
-          render={({ field }) => (
-            <Input
-              label='Password'
-              {...field}
-              error={errors.password?.message as string}
-            />
-          )}
-        />
+      <Button variant='contained'>Sing in</Button>
 
-        <div>
-          undefined
-          <span
-            className='font-bold text-blue-500 cursor-pointer'
-            onClick={handleRedirectToSingUp}
-          >
-            sing up
-          </span>
-        </div>
-      </div>
-    </section>
+      <Stack
+        direction='row'
+        justifyContent='center'
+        spacing={1}
+        alignItems='center'
+      >
+        <Typography variant='body2'>Don’t have an account?</Typography>
+        <Button
+          variant='text'
+          onClick={handleRedirectToSingUp}
+          sx={{ textTransform: 'none', padding: 0, minWidth: 'auto' }}
+        >
+          Sign up
+        </Button>
+      </Stack>
+    </AuthLayout>
   );
 };
 

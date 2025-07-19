@@ -9,7 +9,7 @@ interface ThemeContextValue {
 
 const ThemeModeContext = createContext<ThemeContextValue | null>(null);
 
-export const ThemeWrapper: React.FC<{ children: React.ReactNode }> = ({
+export const ThemeContext: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   const [mode, setMode] = useState<'light' | 'dark'>('light');
