@@ -1,4 +1,4 @@
-import { useThemeMode } from '@core/Context/theme.context.tsx';
+import { useThemeMode } from '@core/context/theme.context.tsx';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import NightlightIcon from '@mui/icons-material/Nightlight';
 import { IconButton } from '@mui/material';

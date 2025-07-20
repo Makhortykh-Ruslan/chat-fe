@@ -1,4 +1,4 @@
-import { ThemeContext } from '@core/Context/theme.context.tsx';
+import { ThemeContext } from '@core/context/theme.context.tsx';
 import { JSX } from 'react';
 import { RouterProvider } from 'react-router-dom';
 

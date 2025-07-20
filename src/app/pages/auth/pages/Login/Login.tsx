@@ -31,7 +31,7 @@ const Login = (): React.ReactNode => {
     setIsShowLoader(true);
 
     const model = getValues();
-    const { error } = await AuthService.register(model);
+    const { error } = await AuthService.login(model);
 
     if (error) {
       alert(error);

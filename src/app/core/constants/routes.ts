@@ -1,4 +1,4 @@
-import { RouterPath } from '@core/types/router-path.ts';
+import { TRouterPath } from '@core/types/t-router-path.ts';
 
 type AuthRoutingPath = 'auth' | 'registration' | 'login';
 
@@ -6,7 +6,7 @@ type MainRoutingPath = 'chat' | 'settings';
 
 export type AppRouting = AuthRoutingPath | MainRoutingPath;
 
-export const appRoutes: Record<AppRouting, RouterPath> = {
+export const appRoutes: Record<AppRouting, TRouterPath> = {
   // AUTH ROUTING //
   auth: {
     routerPath: 'auth',

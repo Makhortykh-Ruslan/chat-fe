@@ -1,2 +1,3 @@
-export * from './forms.ts';
-export * from './router-path.ts';
+export * from './t-forms.ts';
+export * from './t-response.ts';
+export * from './t-router-path.ts';

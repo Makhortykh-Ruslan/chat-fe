@@ -9,9 +9,11 @@ interface ThemeContextValue {
 
 const ThemeModeContext = createContext<ThemeContextValue | null>(null);
 
-export const ThemeContext: React.FC<{ children: React.ReactNode }> = ({
+export const ThemeContext = ({
   children,
-}) => {
+}: {
+  children: React.ReactNode;
+}): React.ReactNode => {
   const [mode, setMode] = useState<'light' | 'dark'>('light');
 
   const toggleTheme = (): void => {

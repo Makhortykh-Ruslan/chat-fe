@@ -1,4 +1,5 @@
 import { appRoutes } from '@core/constants/routes.ts';
+import { SessionGuard } from '@core/guards/session.guard.tsx';
 import { lazy } from 'react';
 import { Navigate, RouteObject } from 'react-router-dom';
 
@@ -17,6 +18,10 @@ const children = [
 
 export const mainRoutingConfig = {
   path: '',
-  element: <MainPage />,
+  element: (
+    <SessionGuard>
+      <MainPage />
+    </SessionGuard>
+  ),
   children,
 } as RouteObject;

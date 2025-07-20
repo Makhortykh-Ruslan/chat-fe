@@ -1,1 +1,2 @@
-export * from './auth-service.ts';
+export * from './auth.service';
+export * from './user.service.ts';
