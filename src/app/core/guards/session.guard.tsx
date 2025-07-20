@@ -13,29 +13,10 @@ export const SessionGuard = ({
   const [isSession, setIsLoading] = useState(false);
 
   useEffect(() => {
-    UserService.getSession()
-      .then(({ data }) => {
-        if (!data.session) {
-          setIsAuthenticated(false);
-          return null;
-        }
-
-        return UserService.getUser();
-      })
-      .then((result) => {
-        if (result?.data?.user) {
-          setIsAuthenticated(true);
-        } else {
-          setIsAuthenticated(false);
-        }
-      })
-      .catch((error) => {
-        console.error(error);
-        setIsAuthenticated(false);
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
+    UserService.getVerifiedUser()
+      .then((user) => setIsAuthenticated(!!user))
+      .catch(() => setIsAuthenticated(false))
+      .finally(() => setIsLoading(false));
   }, []);
 
   if (isShowLoader) {
