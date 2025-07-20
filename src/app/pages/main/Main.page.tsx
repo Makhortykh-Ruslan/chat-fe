@@ -8,7 +8,7 @@ const MainPage = (): React.ReactNode => {
   return (
     <Box display='flex' height='100vh'>
       <SideBar />
-      <Box component='main' flexGrow={1} p={2} overflow='auto'>
+      <Box component='main' flexGrow={1} overflow='auto'>
         <Outlet />
       </Box>
     </Box>
