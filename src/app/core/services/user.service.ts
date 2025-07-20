@@ -1,8 +1,12 @@
 import { supabase } from '@core/supabase/supabase-client.ts';
-import { TSessionResponse } from '@core/types';
+import { SupabaseGetUserResponse, TSessionResponse } from '@core/types';
 
 export class UserService {
   static async getSession(): Promise<TSessionResponse> {
-    return await supabase.auth.getSession();
+    return (await supabase.auth.getSession()) as TSessionResponse;
+  }
+
+  static async getUser(): Promise<SupabaseGetUserResponse> {
+    return await supabase.auth.getUser();
   }
 }

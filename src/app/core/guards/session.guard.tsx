@@ -9,16 +9,33 @@ export const SessionGuard = ({
 }: {
   children: React.ReactNode;
 }): React.ReactNode => {
-  const [isShowLoader, setIsShowLoader] = useState(true);
-  const [isSession, setIsSession] = useState(false);
+  const [isShowLoader, setIsAuthenticated] = useState(true);
+  const [isSession, setIsLoading] = useState(false);
 
   useEffect(() => {
     UserService.getSession()
-      .then((response) => setIsSession(!!response.data.session))
-      .catch((error) => {
-        console.error('Session check failed:', error);
+      .then(({ data }) => {
+        if (!data.session) {
+          setIsAuthenticated(false);
+          return null;
+        }
+
+        return UserService.getUser();
       })
-      .finally(() => setIsShowLoader(false));
+      .then((result) => {
+        if (result?.data?.user) {
+          setIsAuthenticated(true);
+        } else {
+          setIsAuthenticated(false);
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+        setIsAuthenticated(false);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   }, []);
 
   if (isShowLoader) {
