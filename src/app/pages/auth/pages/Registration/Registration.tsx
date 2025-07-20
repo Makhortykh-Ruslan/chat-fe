@@ -12,7 +12,7 @@ import React, { useState } from 'react';
 import { Controller } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 
-import { AuthLayout } from '@/app/pages/auth/components/auth-layout/auth-layout.tsx';
+import { AuthLayout } from '@/app/pages/auth/components/AuthLayout/AuthLayout.tsx';
 import { useRegistrationForm } from '@/app/pages/auth/hooks/useRegistrationForm.tsx';
 
 const Registration: React.FC = () => {
