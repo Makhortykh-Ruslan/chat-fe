@@ -11,6 +11,12 @@ export class UserService {
     return await supabase.auth.getUser();
   }
 
+  static async updateUser(data: {
+    data: { username: string };
+  }): Promise<SupabaseGetUserResponse> {
+    return await supabase.auth.updateUser(data);
+  }
+
   static async getVerifiedUser(): Promise<User | null> {
     const { data } = await UserService.getSession();
     if (!data.session) return null;
