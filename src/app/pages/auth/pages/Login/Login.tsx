@@ -1,6 +1,7 @@
 import { appRoutes } from '@core/constants';
 import { useModuleNavigate } from '@core/hooks';
 import { AuthService } from '@core/services';
+import { useStore } from '@core/store/useStore.tsx';
 import {
   Button,
   CircularProgress,
@@ -19,6 +20,7 @@ const Login = (): React.ReactNode => {
   const [isShowLoader, setIsShowLoader] = useState(false);
   const navigateFromModule = useModuleNavigate();
   const navigate = useNavigate();
+  const setUserToStore = useStore((store) => store.setUser);
 
   const {
     control,
@@ -31,7 +33,7 @@ const Login = (): React.ReactNode => {
     setIsShowLoader(true);
 
     const model = getValues();
-    const { error } = await AuthService.login(model);
+    const { data, error } = await AuthService.login(model);
 
     if (error) {
       alert(error);
@@ -39,6 +41,8 @@ const Login = (): React.ReactNode => {
       reset();
       return;
     }
+
+    setUserToStore(data.user);
 
     navigate('/');
 
