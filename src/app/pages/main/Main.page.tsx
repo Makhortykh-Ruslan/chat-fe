@@ -1,11 +1,17 @@
+import { Box } from '@mui/material';
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 
-const MainPage: React.FC = () => {
+import { SideBar } from '../main/components/SideBar/SideBar.tsx';
+
+const MainPage = (): React.ReactNode => {
   return (
-    <div>
-      <Outlet />
-    </div>
+    <Box display='flex' height='100vh'>
+      <SideBar />
+      <Box component='main' flexGrow={1} p={2} overflow='auto'>
+        <Outlet />
+      </Box>
+    </Box>
   );
 };
 
