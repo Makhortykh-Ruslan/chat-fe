@@ -1,6 +1,6 @@
 import { appRoutes } from '@core/constants';
 import { useModuleNavigate } from '@core/hooks';
-import { AuthService, UserService } from '@core/services';
+import { AuthService } from '@core/services';
 import {
   Button,
   CircularProgress,
@@ -38,7 +38,7 @@ const Registration: React.FC = () => {
         return;
       }
 
-      const { error: updateError } = await UserService.updateUser({
+      const { error: updateError } = await AuthService.updateUser({
         data: { username: model.userName },
       });
 

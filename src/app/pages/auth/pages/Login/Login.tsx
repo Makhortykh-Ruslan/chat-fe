@@ -1,4 +1,5 @@
 import { appRoutes } from '@core/constants';
+import { useAlertSnackbar } from '@core/context';
 import { useModuleNavigate } from '@core/hooks';
 import { AuthService } from '@core/services';
 import { useStore } from '@core/store/useStore.tsx';
@@ -20,6 +21,7 @@ const Login = (): React.ReactNode => {
   const [isShowLoader, setIsShowLoader] = useState(false);
   const navigateFromModule = useModuleNavigate();
   const navigate = useNavigate();
+  const alert = useAlertSnackbar();
   const setUserToStore = useStore((store) => store.setUser);
 
   const {
@@ -36,7 +38,7 @@ const Login = (): React.ReactNode => {
     const { data, error } = await AuthService.login(model);
 
     if (error) {
-      alert(error);
+      alert.error(error.message);
       setIsShowLoader(false);
       reset();
       return;

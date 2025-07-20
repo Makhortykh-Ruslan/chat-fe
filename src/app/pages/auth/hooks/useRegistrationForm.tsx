@@ -17,8 +17,7 @@ export const useRegistrationForm = (): UseFormReturn<TRegistrationForm> => {
       .min(6, 'Password must by minimum 6 symbols'),
     [EControlName.USER_NAME]: z
       .string({ required_error: 'Filed is required' })
-      .min(1, 'Field is required')
-      .min(6, 'Password must by minimum 6 symbols'),
+      .min(1, 'Field is required'),
   });
 
   return useForm({

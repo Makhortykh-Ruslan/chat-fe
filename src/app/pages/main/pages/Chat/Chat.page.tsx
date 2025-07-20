@@ -1,12 +1,30 @@
 import { ToggleTheme } from '@core/components/ToggleTheme/ToggleTheme.tsx';
+import { MessageModel } from '@core/model/message.model.ts';
+import { MessageService } from '@core/services';
+import { useStore } from '@core/store/useStore.tsx';
 import { Avatar, Box, Button, TextField, Typography } from '@mui/material';
 import { deepPurple } from '@mui/material/colors';
-import React, { useState } from 'react';
+import { User } from '@supabase/supabase-js';
+import React, { useEffect, useState } from 'react';
 
 const ChatPage = (): React.ReactNode => {
   const [message, setMassage] = useState('');
+  const currentUser = useStore((state) => state.user) as User;
+
+  useEffect(() => {
+    MessageService.get(currentUser).then((res) => {
+      console.log('messages', res);
+    });
+  }, []);
+
   const handleSend = (): void => {
-    console.log('message', message);
+    const model: MessageModel = {
+      sender_id: currentUser?.id as string,
+      receiver_id: 'ca59673f-520b-4c0f-b8ca-0f397ef98c69',
+      content: message,
+    };
+
+    MessageService.send(model);
     setMassage('');
   };
 

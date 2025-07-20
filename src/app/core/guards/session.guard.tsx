@@ -1,6 +1,6 @@
 import { appRoutes } from '@core/constants';
 import { useLoaderOverlay } from '@core/context';
-import { UserService } from '@core/services';
+import { AuthService } from '@core/services';
 import { useStore } from '@core/store/useStore.tsx';
 import { TAuthStatuses } from '@core/types';
 import React, { useEffect, useState } from 'react';
@@ -19,7 +19,7 @@ export const SessionGuard = ({
   useEffect(() => {
     update(true);
 
-    UserService.getVerifiedUser()
+    AuthService.getVerifiedUser()
       .then((user) => {
         if (user) {
           setUserToStore(user);
