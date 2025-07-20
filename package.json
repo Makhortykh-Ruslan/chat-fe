@@ -7,7 +7,10 @@
     "start": "vite",
     "test": "jest",
     "build": "tsc -b && vite build",
-    "lint:fix": "eslint . --ext .ts,.tsx --fix && prettier --write .",
+    "lint": "eslint \"{src,apps,libs,test}/**/*.ts\"",
+    "lint:fix": "eslint \"{src,apps,libs,test}/**/*{.ts,.html}\" --fix",
+    "prettier": "prettier \"./**/*{.ts,.js,.scss,.html}\" --check",
+    "prettier:fix": "prettier \"./**/*{.ts,.js,.scss,.html}\" --write",
     "preview": "vite preview",
     "generate-icons": "svg-to-ts-constants --config .svg-to-ts.json"
   },

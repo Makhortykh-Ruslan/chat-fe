@@ -1,11 +1,11 @@
 @use 'fonts' as fonts;
 
-
 :root {
+  &.light-mode {
+  }
 
-  &.light-mode {}
-
-  &.dark-mode {}
+  &.dark-mode {
+  }
 }
 
 $gray: #344054;

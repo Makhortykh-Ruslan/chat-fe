@@ -12,14 +12,13 @@ import react from 'eslint-plugin-react';
 import security from 'eslint-plugin-security';
 import jsxA11y from 'eslint-plugin-jsx-a11y';
 
-
 export default tseslint.config(
   { ignores: ['dist'] },
   {
     settings: {
-        'import/resolver': {
-            typescript: {},
-        },
+      'import/resolver': {
+        typescript: {},
+      },
     },
     extends: [js.configs.recommended, ...tseslint.configs.recommended],
     files: ['**/*.{ts,tsx}'],
@@ -27,50 +26,61 @@ export default tseslint.config(
       ecmaVersion: 2020,
       globals: globals.browser,
     },
-      plugins: {
-          'react-hooks': reactHooks,
-          'react-refresh': reactRefresh,
-          prettier: eslintPluginPrettier,
-          'import': eslintPluginImport,
-          'simple-import-sort': eslintPluginSimpleImportSort,
-          'unused-imports': eslintPluginUnusedImports,
-          'react': react,
-          'security': security,
-          'jsx-a11y': jsxA11y,
-      },
-      rules: {
-          ...reactHooks.configs.recommended.rules,
-          'react-refresh/only-export-components': 'off',
-          '@typescript-eslint/explicit-function-return-type': ['error'],
-          'prettier/prettier': ['error', prettierConfig],
+    plugins: {
+      'react-hooks': reactHooks,
+      'react-refresh': reactRefresh,
+      prettier: eslintPluginPrettier,
+      import: eslintPluginImport,
+      'simple-import-sort': eslintPluginSimpleImportSort,
+      'unused-imports': eslintPluginUnusedImports,
+      react: react,
+      security: security,
+      'jsx-a11y': jsxA11y,
+    },
+    rules: {
+      ...reactHooks.configs.recommended.rules,
+      'react-refresh/only-export-components': 'off',
+      '@typescript-eslint/explicit-function-return-type': ['error'],
+      'prettier/prettier': ['error', prettierConfig],
 
-          // Import rules
-          'import/order': ['error', { 'groups': [['builtin', 'external', 'internal']] }],
-          'import/no-unresolved': 'error',
-          'import/no-duplicates': 'error',
+      // Import rules
+      'import/order': [
+        'error',
+        { groups: [['builtin', 'external', 'internal']] },
+      ],
+      'import/no-unresolved': 'error',
+      'import/no-duplicates': 'error',
 
-          // Sort imports
-          'simple-import-sort/imports': 'error',
-          'simple-import-sort/exports': 'error',
+      // Sort imports
+      'simple-import-sort/imports': 'error',
+      'simple-import-sort/exports': 'error',
 
-          // Remove unused imports
-          'unused-imports/no-unused-imports': 'off',
-          'unused-imports/no-unused-vars': [
-              'off',
-              { 'vars': 'all', 'varsIgnorePattern': '^_', 'args': 'after-used', 'argsIgnorePattern': '^_' },
-          ],
+      // Remove unused imports
+      'unused-imports/no-unused-imports': 'off',
+      'unused-imports/no-unused-vars': [
+        'off',
+        {
+          vars: 'all',
+          varsIgnorePattern: '^_',
+          args: 'after-used',
+          argsIgnorePattern: '^_',
+        },
+      ],
 
-          // React rules
-          'react/jsx-uses-react': 'error',
-          'react/jsx-uses-vars': 'error',
-          'react/react-in-jsx-scope': 'off',
+      // React rules
+      'react/jsx-uses-react': 'error',
+      'react/jsx-uses-vars': 'error',
+      'react/react-in-jsx-scope': 'off',
 
-          // Security rules
-          'security/detect-object-injection': 'off',
+      // Security rules
+      'security/detect-object-injection': 'off',
 
-          // Accessibility (a11y) rules
-          'jsx-a11y/anchor-is-valid': ['error', { aspects: ['invalidHref', 'preferButton'] }],
-          'jsx-a11y/no-static-element-interactions': 'warn',
-      },
+      // Accessibility (a11y) rules
+      'jsx-a11y/anchor-is-valid': [
+        'error',
+        { aspects: ['invalidHref', 'preferButton'] },
+      ],
+      'jsx-a11y/no-static-element-interactions': 'warn',
+    },
   },
 );
