@@ -20,7 +20,7 @@ export const appRoutes: Record<AppRouting, TRouterPath> = {
 
   // MAIN ROUTING //
   chat: {
-    routerPath: 'chat',
+    routerPath: 'chat/:id',
   },
   settings: {
     routerPath: 'settings',

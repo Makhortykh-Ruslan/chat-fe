@@ -1,4 +1,3 @@
-import { ToggleTheme } from '@core/components/ToggleTheme/ToggleTheme.tsx';
 import { MessageModel } from '@core/model/message.model.ts';
 import { MessageService } from '@core/services';
 import { useStore } from '@core/store/useStore.tsx';
@@ -12,9 +11,9 @@ const ChatPage = (): React.ReactNode => {
   const currentUser = useStore((state) => state.user) as User;
 
   useEffect(() => {
-    MessageService.get(currentUser).then((res) => {
-      console.log('messages', res);
-    });
+    // MessageService.get(currentUser).then((res) => {
+    //   console.log('messages', res);
+    // });
   }, []);
 
   const handleSend = (): void => {
@@ -30,7 +29,6 @@ const ChatPage = (): React.ReactNode => {
 
   return (
     <>
-      <ToggleTheme></ToggleTheme>
       <Box display='flex' flexDirection='column' height='100vh'>
         {/* Header */}
         <Box

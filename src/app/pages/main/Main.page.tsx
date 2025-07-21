@@ -11,34 +11,34 @@ import { SideBar } from '../main/components/SideBar/SideBar.tsx';
 const MainPage = (): React.ReactNode => {
   const currentUser = useStore((store) => store.user as User);
 
-  useEffect(() => {
-    UsersService.getAllUsersChat(currentUser)
-      .then((response) => {
-        console.log('res', response);
-      })
-      .catch((error) => {
-        console.log('err', error);
-      })
-      .finally(() => {
-        console.log('finally');
-      });
-
-    supabase
-      .channel('private-messages')
-      .on(
-        'postgres_changes',
-        {
-          event: 'INSERT',
-          schema: 'public',
-          table: 'messages',
-          filter: `receiver_id=eq.${currentUser.id}`,
-        },
-        (payload) => {
-          console.log('payload.new', payload.new);
-        },
-      )
-      .subscribe();
-  }, []);
+  // useEffect(() => {
+  //   UsersService.getAllUsersChat(currentUser)
+  //     .then((response) => {
+  //       console.log('res', response);
+  //     })
+  //     .catch((error) => {
+  //       console.log('err', error);
+  //     })
+  //     .finally(() => {
+  //       console.log('finally');
+  //     });
+  //
+  //   supabase
+  //     .channel('private-messages')
+  //     .on(
+  //       'postgres_changes',
+  //       {
+  //         event: 'INSERT',
+  //         schema: 'public',
+  //         table: 'messages',
+  //         filter: `receiver_id=eq.${currentUser.id}`,
+  //       },
+  //       (payload) => {
+  //         console.log('payload.new', payload.new);
+  //       },
+  //     )
+  //     .subscribe();
+  // }, []);
 
   return (
     <Box display='flex' height='100vh'>
