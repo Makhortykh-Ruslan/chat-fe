@@ -34,9 +34,18 @@ const Registration = (): React.ReactNode => {
     setIsShowLoader(true);
 
     try {
-      const model = getValues();
+      const { email, password, userName } = getValues();
 
-      const { error: registerError } = await AuthService.register(model);
+      const { error: registerError } = await AuthService.register({
+        email,
+        password,
+        options: {
+          data: {
+            userName,
+            email,
+          },
+        },
+      });
 
       if (registerError) {
         alert.error(registerError.message ?? 'Registration error');

@@ -7,6 +7,7 @@ import {
 import {
   AuthResponse,
   AuthTokenResponsePassword,
+  SignUpWithPasswordCredentials,
   User,
 } from '@supabase/supabase-js';
 
@@ -15,7 +16,9 @@ export class AuthService {
     return await supabase.auth.signInWithPassword(data);
   }
 
-  static async register(data: TAuthForm): Promise<AuthResponse> {
+  static async register(
+    data: SignUpWithPasswordCredentials,
+  ): Promise<AuthResponse> {
     return await supabase.auth.signUp(data);
   }
 

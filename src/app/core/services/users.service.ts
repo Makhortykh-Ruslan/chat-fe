@@ -22,11 +22,15 @@ export class UsersService {
 
     const { data: users, error: profilesError } = await supabase
       .from('users')
-      .select('id, userName, avatar_url')
+      .select('id, userName')
       .in('id', interlocutorIds);
 
     if (profilesError) throw profilesError;
 
     return users;
+  }
+
+  static async getAllUsers(): Promise<any> {
+    return supabase.from('users').select('*');
   }
 }
