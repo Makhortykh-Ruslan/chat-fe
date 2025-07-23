@@ -33,4 +33,11 @@ export class UsersService {
   static async getAllUsers(): Promise<any> {
     return supabase.from('users').select('*');
   }
+
+  static async searchUsers(search: string): Promise<any> {
+    return supabase
+      .from('users')
+      .select('id, userName')
+      .ilike('userName', `%${search}%`);
+  }
 }

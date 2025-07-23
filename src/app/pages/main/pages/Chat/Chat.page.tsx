@@ -3,23 +3,18 @@ import { MessageService } from '@core/services';
 import { useStore } from '@core/store/useStore.tsx';
 import { Avatar, Box, Button, TextField, Typography } from '@mui/material';
 import { deepPurple } from '@mui/material/colors';
-import { User } from '@supabase/supabase-js';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 const ChatPage = (): React.ReactNode => {
   const [message, setMassage] = useState('');
-  const currentUser = useStore((state) => state.user) as User;
 
-  useEffect(() => {
-    // MessageService.get(currentUser).then((res) => {
-    //   console.log('messages', res);
-    // });
-  }, []);
+  const currentUser = useStore((state) => state.user);
+  const currentChat = useStore((state) => state.currentChat);
 
   const handleSend = (): void => {
     const model: MessageModel = {
       sender_id: currentUser?.id as string,
-      receiver_id: 'ca59673f-520b-4c0f-b8ca-0f397ef98c69',
+      receiver_id: currentChat.id,
       content: message,
     };
 
@@ -46,15 +41,13 @@ const ChatPage = (): React.ReactNode => {
           }}
         >
           <Avatar sx={{ bgcolor: deepPurple[500] }}>OP</Avatar>
-          <Typography fontWeight='bold'>Співрозмовник</Typography>
+          <Typography fontWeight='bold'>
+            {currentChat?.userName || '-'}
+          </Typography>
         </Box>
 
-        {/* Messages */}
-        <Box flexGrow={1} overflow='auto' p={2}>
-          {/* ...messages... */}
-        </Box>
+        <Box flexGrow={1} overflow='auto' p={2}></Box>
 
-        {/* Input */}
         <Box
           display='flex'
           p={2}

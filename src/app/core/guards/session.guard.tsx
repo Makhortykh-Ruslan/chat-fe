@@ -21,6 +21,7 @@ export const SessionGuard = ({
 
     AuthService.getVerifiedUser()
       .then((user) => {
+        console.log('user', user)
         if (user) {
           setUserToStore(user);
           setStatus('authenticated');
