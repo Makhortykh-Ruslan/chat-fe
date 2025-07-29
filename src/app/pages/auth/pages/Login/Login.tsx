@@ -15,7 +15,7 @@ import { Controller } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 
 import { AuthLayout } from '@/app/pages/auth/components/AuthLayout/AuthLayout.tsx';
-import { useAuthForm } from '@/app/pages/auth/hooks/useAuthForm.tsx';
+import { useAuthForm } from '@/app/pages/auth/hooks';
 
 const Login = (): React.ReactNode => {
   const [isShowLoader, setIsShowLoader] = useState(false);
@@ -28,7 +28,6 @@ const Login = (): React.ReactNode => {
     control,
     getValues,
     formState: { errors, isValid },
-    reset,
   } = useAuthForm();
 
   const handleSubmit = async (): Promise<void> => {
@@ -40,7 +39,6 @@ const Login = (): React.ReactNode => {
     if (error) {
       alert.error(error.message);
       setIsShowLoader(false);
-      reset();
       return;
     }
 
@@ -57,7 +55,12 @@ const Login = (): React.ReactNode => {
 
   return (
     <AuthLayout>
-      <Typography variant='h4' align='center' sx={{ textAlign: 'center' }}>
+      <Typography
+        data-testid='login-form'
+        variant='h4'
+        align='center'
+        sx={{ textAlign: 'center' }}
+      >
         Login
       </Typography>
 
