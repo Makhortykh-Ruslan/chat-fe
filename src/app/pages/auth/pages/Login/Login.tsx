@@ -70,6 +70,7 @@ const Login = (): React.ReactNode => {
         render={({ field }) => (
           <TextField
             {...field}
+            data-testid='email-field'
             id='outlined-basic'
             type='email'
             label='Email'
@@ -87,6 +88,7 @@ const Login = (): React.ReactNode => {
         render={({ field }) => (
           <TextField
             {...field}
+            data-testid='password-field'
             id='outlined-basic'
             type='password'
             label='Password'
@@ -99,6 +101,7 @@ const Login = (): React.ReactNode => {
       />
 
       <Button
+        data-testid='button'
         variant='contained'
         onClick={handleSubmit}
         disabled={isShowLoader || !isValid}
